@@ -79,6 +79,15 @@ while game:
         
     if ball.rect.y > win_height-50 or ball.rect.y < 0:
         speed_y += -1    
+
+    if ball.rect.x < e:
+        finish - True
+        window.blit(lose1, (200, 200))
+        game_over = True
+
+    racket1.reset()
+    racket2.reset()
+    ball.reset()
         
     display.update()
     clock.tick(FPS)
