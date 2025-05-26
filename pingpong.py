@@ -11,16 +11,19 @@ class GameSprite(sprite.Sprite):
         window.blit(self.image, (self.rect.x, self.rect.y))
 
 class Player(GameSprite):
-    def update(self):
+    def update_l(self):
         keys = key.get_pressed()
-        if keys[K_LEFT] and self.rect.x > 5:
+        if keys[K_W] and self.rect.x > 5:
             self.rect.x -= self.speed
-        if keys[K_RIGHT] and self.rect.x < win_width - 80:
+        if keys[K_S] and self.rect.x < win_width - 80:
             self.rect.x += self.speed
 
-    def fire(self):
-        bullet = Bullet('bullet.png', self.rect.centerx, self.rect.top, 15, 20, -15)
-        bullets.add(bullet)
+    def update_r(self):
+        keys = key.get_pressed()
+        if keys[K_UP] and self.rect.x > 5:
+            self.rect.x -= self.speed
+        if keys[K_DOWN] and self.rect.x < win_width - 80:
+            self.rect.x += self.speed
 
 class Enemy(GameSprite):
     def update(self):
@@ -38,6 +41,10 @@ win_width = 700
 win_height = 500
 window = display.set_mode((win_width, win_height))
 window.fill(back)
+
+racket1 = Player('racket.png', 30, 200, 4, 50, 150)
+racket2 = Player('racket.png', 520, 200, 4, 50, 150)
+ball - GameSprite('tenis_ball.png', 200, 200, 4, 50, 50)
 
 game = True
 finish = False
